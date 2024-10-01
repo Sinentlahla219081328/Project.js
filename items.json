@@ -1,22 +1,17 @@
 [
   {
-    "name": "Sample Item two",
-    "description": "This is a description of the sample item two.",
+    "name": "Beef",
+    "description": "This is a cows meat",
+    "id": 1
+  },
+  {
+    "name": "Mutton",
+    "description": "This is a sheep meat",
     "id": 2
   },
   {
-    "name": "Sample Item three",
-    "description": "This is a description of the sample item three.",
+    "name": "Pork",
+    "description": "This is a pig meat",
     "id": 3
-  },
-  {
-    "name": "Sample Item four",
-    "description": "This is a description of the sample item four.",
-    "id": 4
-  },
-  {
-    "name": "Sample Item five",
-    "description": "This is a description of the sample item five.",
-    "id": 5
   }
 ]

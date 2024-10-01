@@ -1,6 +1,6 @@
 // Import the required modules
-const http = require('http');
-const fs = require('fs').promises;
+const http = require('http');// used to create a server
+const fs = require('fs').promises;// allowing to read , write , manipulate files and directories 
 const path = require('path');
 
 // Define the port number
@@ -23,7 +23,7 @@ async function readData() {
 // Utility function to write data to the JSON file
 async function writeData(data) {
   try {
-    await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2));
+    await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2)); 
   } catch (error) {
     console.error('Error writing data:', error);
   }
