@@ -1,15 +1,15 @@
-// Import the required modules
-const http = require('http');// used to create a server
-const fs = require('fs').promises;// allowing to read , write , manipulate files and directories 
+
+const http = require('http');
+const fs = require('fs').promises;
 const path = require('path');
 
-// Define the port number
+
 const PORT = 3000;
 
-// Define the path to the JSON file that acts as the database
+
 const dataFilePath = path.join(__dirname, 'items.json');
 
-// Utility function to read data from the JSON file
+
 async function readData() {
   try {
     const data = await fs.readFile(dataFilePath, 'utf8');
@@ -20,7 +20,6 @@ async function readData() {
   }
 }
 
-// Utility function to write data to the JSON file
 async function writeData(data) {
   try {
     await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2)); 
@@ -29,13 +28,11 @@ async function writeData(data) {
   }
 }
 
-// Create the server
 const server = http.createServer(async (req, res) => {
   const { method, url } = req;
 
   console.log(`Received ${method} request for ${url}`);
 
-  // Handle the GET /items route to fetch items from the JSON file
   if (url === '/items' && method === 'GET') {
     try {
       const items = await readData();
@@ -46,7 +43,8 @@ const server = http.createServer(async (req, res) => {
       res.end(JSON.stringify({ error: 'Internal Server Error' }));
     }
   }
-  // Handle the POST /items route to add a new item
+
+
   else if (url === '/items' && method === 'POST') {
     let body = '';
 
@@ -76,7 +74,8 @@ const server = http.createServer(async (req, res) => {
       }
     });
   }
-  // Handle the PUT /items/:id route to update an existing item
+
+ 
   else if (url.startsWith('/items/') && method === 'PUT') {
     const id = parseInt(url.split('/')[2], 10);
     let body = '';
@@ -112,7 +111,7 @@ const server = http.createServer(async (req, res) => {
       }
     });
   }
-  // Handle the DELETE /items/:id route to delete an existing item
+ 
   else if (url.startsWith('/items/') && method === 'DELETE') {
     const id = parseInt(url.split('/')[2], 10);
     try {
@@ -139,7 +138,6 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-// Start the server and listen on the specified port
 server.listen(PORT, () => {
   console.log(`Server is running and listening on http://localhost:${PORT}`);
 });
